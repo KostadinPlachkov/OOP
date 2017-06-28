@@ -5,7 +5,7 @@ public class BankAccount {
     private double balance;
 
     public BankAccount() {
-        this.id = new Random().nextInt() ;
+        this.id = new Random().nextInt();
         this.balance = 0;
     }
 

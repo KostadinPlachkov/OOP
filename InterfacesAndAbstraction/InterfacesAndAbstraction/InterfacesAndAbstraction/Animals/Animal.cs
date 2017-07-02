@@ -35,7 +35,7 @@ namespace InterfacesAndAbstraction.Animals
 
         public virtual string Description()
         {
-            return "Im animal";
+            return "Animal";
         }
 
         public abstract string SayHello();

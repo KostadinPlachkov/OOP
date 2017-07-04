@@ -10,6 +10,7 @@ namespace Generics
     {
         static void Main()
         {
+            // Generic Class
             var list = new MyCustomData<int>();
             list.Add(50);
             list.Add(5);
@@ -19,6 +20,7 @@ namespace Generics
             Console.WriteLine(list[0]);
             Console.WriteLine(list.Count);
 
+            // Generic Method
             var numbers = CreateList(10, 5);
             var text = CreateList("Ivan", 3);
             foreach (var number in numbers)
@@ -29,7 +31,15 @@ namespace Generics
             {
                 Console.WriteLine(str);
             }
-            
+
+            // Custom
+            var set = new HashSet<int>();
+            set.Add(1);
+            set.Add(12);
+            set.Add(13);
+            set.Add(14);
+            set.Add(15);
+            set.ForEach(i => Console.WriteLine(i));
         }
 
         public static List<T> CreateList<T>(T value, int amount)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Generics
 {
+    // Generic Interface
     interface IReadOnlyData<T>
     {
         void Add(T item);

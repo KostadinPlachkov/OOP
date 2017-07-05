@@ -27,6 +27,7 @@ namespace IteratorsAndComparators
             for (int i = 0; i < this.books.Count; i += 2)
             {
                 yield return this.books[i];
+                // yield break; // stops the foreach
             }
 
             // return new BooksEnumerator(this.books);  // In case you are using the class BooksEnumerator #43

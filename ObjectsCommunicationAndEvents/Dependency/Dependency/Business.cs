@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectsAndEvents
+namespace Dependency
 {
     public class Business
     {
@@ -17,12 +17,19 @@ namespace ObjectsAndEvents
         private IDataProvider dataProvider;
 
         private IRandomNumberProvider randomNumberProvider;
+
         public Business(
             IDataProvider dataProvider,
             IRandomNumberProvider randomNumberProvider)
         {
             this.dataProvider = dataProvider;
             this.randomNumberProvider = randomNumberProvider;
+        }
+
+
+        public Business() 
+            : this(new Database(), new RandomProvider())
+        {
         }
 
         public void VisualizeAllStudents()

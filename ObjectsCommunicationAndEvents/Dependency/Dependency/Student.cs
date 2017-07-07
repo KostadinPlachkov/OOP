@@ -1,4 +1,4 @@
-﻿namespace ObjectsAndEvents
+﻿namespace Dependency
 {
     public class Student
     {

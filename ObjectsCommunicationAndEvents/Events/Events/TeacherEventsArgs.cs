@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectsAndEvents
+namespace Events
 {
-    public interface IRandomNumberProvider
+    class TeacherEventsArgs : EventArgs
     {
-        int GetRandomNumber(int min = 0, int max = int.MaxValue);
+        public string ClassName { get; set; }
     }
 }

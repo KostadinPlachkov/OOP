@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectsAndEvents
+namespace Dependency
 {
-    public interface IDataProvider
+    public interface IRandomNumberProvider
     {
-        List<Student> GetStudents();
+        int GetRandomNumber(int min = 0, int max = int.MaxValue);
     }
 }

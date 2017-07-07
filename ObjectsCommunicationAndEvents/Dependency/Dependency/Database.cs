@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectsAndEvents
+namespace Dependency
 {
     public class Database : IDataProvider
     {

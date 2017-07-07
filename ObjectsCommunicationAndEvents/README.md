@@ -102,3 +102,10 @@ class Printer
 * Global function
 * Random generator
 * Console
+
+## Summary
+* Strong cohesion == single purpose
+* Loose coupling == minimal interaction with others
+* Dependency Inversion Principle is a way of achieving loose coupling
+* Events allow subscribing for notifications about something happening in an object
+     * When an event "happens", all subscribers are notified

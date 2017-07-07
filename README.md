@@ -7,4 +7,5 @@ Topics:
 * Interfaces and Abstraction  
 * Generics  
 * Iterators and Comparators  
-* Enums and Attributes
+* Enums and Attributes  
+* Objects Communication and Events

@@ -83,6 +83,52 @@ namespace Reflection
             watch.Stop();
             Console.WriteLine("Time with new: " + watch.Elapsed);
             Console.WriteLine("List count: " + list.Count);
+
+            // Fields
+            var catFields = new Cat();
+            var fields = catType.GetFields(
+                BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+            Console.WriteLine("All public, private and static fields in " + catType.Name + ":");
+            foreach (var fieldInfo in fields)
+            {
+                Console.WriteLine("- " + fieldInfo.Name);
+                // Field Altering
+                if (fieldInfo.Name.Contains("Name"))
+                {
+                    fieldInfo.SetValue(catFields, "John");
+                }
+
+            }
+            Console.WriteLine("Name: " + catFields.Name);
+            Console.WriteLine("Static field with name 'SomeStaticField': " + catType.GetField("SomeStaticField", BindingFlags.Static | BindingFlags.Public));
+
+            // Properties
+            var anotherCat = new Cat()
+            {
+                Name = "Annie",
+                Age = 25
+
+            };
+            var anotherCatType = anotherCat.GetType();
+            var nameProperty = anotherCatType.GetProperty("Name");
+            Console.WriteLine("Name of the cat: " + nameProperty.GetValue(anotherCat));
+            nameProperty.SetValue(anotherCat, "Bob");
+            Console.WriteLine("New name of the cat: " + nameProperty.GetValue(anotherCat));
+
+
+            //
+            var constructors = typeof(Cat).GetConstructors();
+            foreach (var constructor in constructors)
+            {
+                var paramaters = constructor.GetParameters();
+                foreach (var param in paramaters)
+                {
+                    Console.WriteLine(param.ParameterType.Name + " " + param.Name);
+                }
+                Console.WriteLine("-----------------");
+            }
+
+
         }
 
         private static string GetTypeName<T>()

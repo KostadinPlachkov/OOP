@@ -115,9 +115,11 @@ namespace Reflection
             nameProperty.SetValue(anotherCat, "Bob");
             Console.WriteLine("New name of the cat: " + nameProperty.GetValue(anotherCat));
 
+            // GetTypeInfo() is relevant in some cases.
 
-            //
+            // Constructors
             var constructors = typeof(Cat).GetConstructors();
+            Console.WriteLine("Constructors parameters:");
             foreach (var constructor in constructors)
             {
                 var paramaters = constructor.GetParameters();
@@ -128,6 +130,45 @@ namespace Reflection
                 Console.WriteLine("-----------------");
             }
 
+            var constructorStringInt = typeof(Cat).GetConstructor(new[] {typeof(string), typeof(int)});
+            Console.WriteLine("Constructor of string and int: " + constructorStringInt);
+            var catCon = constructorStringInt.Invoke(new object[]{ "Emma", 20});
+            Console.WriteLine(catCon);
+
+            // Methods
+            var methods = typeof(Cat).GetMethods();
+            Console.WriteLine("All methods of Cat: ");
+            foreach (var meth in methods)
+            {
+                Console.WriteLine("- " + meth.Name);
+            }
+            var method = catType.GetMethod("MealsEaten");
+            method.Invoke(null, new object[] {3});
+
+            // Obtaining Attributes
+            var authorOfCateName = typeof(Cat)
+                .GetProperty("Name")
+                .GetCustomAttribute<AuthorAttribute>()
+                ?.Name;
+            Console.WriteLine("Author of Cat Name property: " + authorOfCateName);
+            Console.WriteLine("All attributes in class Cat: ");
+            // How NOT to write code!!!!
+            typeof(Cat)
+                .GetProperties()
+                .Select(pr => new
+                {
+                    Name = pr.Name,
+                    Attrs = pr.GetCustomAttributes()
+                })
+                .ToList()
+                .ForEach(pr => Console.WriteLine(
+                    "- " + 
+                    pr.Name + ": " +
+                    string.Join(
+                        ", ", pr.Attrs.Select(
+                            a => a.GetType()
+                            .Name
+                            .Replace("Attribute", string.Empty)))));
 
         }
 

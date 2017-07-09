@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,16 @@ namespace Reflection
         }
 
         public static string SomeStaticField;
+
+        public static void MealsEaten(int meals)
+        {
+            Console.WriteLine("Meals taken: " + meals);
+        }
+        [Author("Kostadin")]
+        [MaxLength(30)]
         public string Name { get; set; }
+
+        [Required(AllowEmptyStrings = true)]
         public int Age { get; set; }
 
 

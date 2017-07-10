@@ -25,3 +25,7 @@ public void TestDeposit()
       Assert.AreEqual(150.0, account.Balance, "Balance is wrong.");
 }
 ```
+## Code Coverage
+Shows what **percent of the code** we've covered  
+High code coverage means **less untested code**  
+**70-80% coverage is excellent**  

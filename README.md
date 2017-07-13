@@ -11,3 +11,4 @@ Topics:
 * Objects Communication and Events  
 * Reflection  
 * Unit Testing  
+* Open/Closed and Liskov Principle

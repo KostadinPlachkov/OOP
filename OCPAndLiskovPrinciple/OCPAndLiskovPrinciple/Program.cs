@@ -8,8 +8,15 @@ namespace OCPAndLiskovPrinciple
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            List<Worker> workers = new List<Worker>();
+            workers.Add(new Lumberjack());
+            workers.Add(new Fireman());
+            foreach (var worker in workers)
+            {
+                worker.DailyRoutine();
+            }
         }
     }
 }
